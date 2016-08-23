@@ -35,6 +35,7 @@ public class Frame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jd_ARLF = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -77,6 +78,17 @@ public class Frame extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/helpPanel.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jd_Help.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 351, -1));
+
+        javax.swing.GroupLayout jd_ARLFLayout = new javax.swing.GroupLayout(jd_ARLF.getContentPane());
+        jd_ARLF.getContentPane().setLayout(jd_ARLFLayout);
+        jd_ARLFLayout.setHorizontalGroup(
+            jd_ARLFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 453, Short.MAX_VALUE)
+        );
+        jd_ARLFLayout.setVerticalGroup(
+            jd_ARLFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 338, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pagina Principal");
@@ -192,6 +204,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JDialog jd_ARLF;
     private javax.swing.JDialog jd_Help;
     // End of variables declaration//GEN-END:variables
 }
