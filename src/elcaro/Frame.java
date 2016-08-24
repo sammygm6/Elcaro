@@ -5,6 +5,8 @@
  */
 package elcaro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Bandido
@@ -289,6 +291,11 @@ public class Frame extends javax.swing.JFrame {
         setTitle("Pagina Principal");
 
         jButton1.setText("ARLF");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("ARLV");
 
@@ -351,6 +358,17 @@ public class Frame extends javax.swing.JFrame {
         // evento para cerrar el panel de ayuda
         this.jd_Help.setVisible(false);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // evento para levantar el dialogo para crear ARLF
+        String nombreArchivotmp = JOptionPane.showInputDialog(this, "Ingrese Nombre del archivo");
+        this.path = "archivos\\"+nombreArchivotmp+".txt";
+        String Sizetmp = JOptionPane.showInputDialog(this,"Ingrese el tamaño de los campos");
+        this.CampoSize = Integer.parseInt(Sizetmp);
+        this.jd_ARLF.pack();
+        this.jd_ARLF.setLocationRelativeTo(null);
+        this.jd_ARLF.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -424,4 +442,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JDialog jd_ARLF;
     private javax.swing.JDialog jd_Help;
     // End of variables declaration//GEN-END:variables
+///////////////////variables globales
+    int CampoSize;
+    String path;
 }
