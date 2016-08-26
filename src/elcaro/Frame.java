@@ -5,10 +5,6 @@
  */
 package elcaro;
 
-/**
- *
- * @author Bandido
- */
 public class Frame extends javax.swing.JFrame {
 
     /**
