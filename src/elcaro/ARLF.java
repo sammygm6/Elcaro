@@ -104,7 +104,7 @@ public class ARLF {
             int avail = RAF.read();
             while (avail != -1) {
                 AvailList.push(Integer.toString(avail));
-                RAF.seek(avail);
+                RAF.seek(avail+1);
                 avail = RAF.read();
             }
             RAF.close();
@@ -141,6 +141,8 @@ public class ARLF {
                     if (campo.equals(temp)) {
                         RAF.seek(1);
                         int tempC = RAF.read();
+                        RAF.seek(pos);
+                        RAF.write('*');
                         RAF.seek(pos+1);
                         RAF.write(tempC);
                         RAF.seek(1);
