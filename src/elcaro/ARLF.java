@@ -30,7 +30,7 @@ public class ARLF {
     }
 
     public int getAddress(int RecordNumber) {
-        return RecordNumber * size + 1;
+        return RecordNumber * size + 2;//el +2 es porque el "header" ocupa 2 espacios el primer byte el size y el segundo el availList
     }
 
     public ARLF(File registro) {
@@ -98,16 +98,31 @@ public class ARLF {
 
     public void BuildAvailList() {
         this.AvailList = new Stack();
-            try {
-            this.RAF = new RandomAccessFile(this.archivo,"rw");
+        try {
+            this.RAF = new RandomAccessFile(this.archivo, "rw");
             RAF.seek(1);
             int avail = RAF.read();
-                while(avail != -1){
-                    AvailList.push(Integer.toString(avail));
-                    RAF.seek(avail);
-                    avail = RAF.read();
-                }
+            while (avail != -1) {
+                AvailList.push(Integer.toString(avail));
+                RAF.seek(avail);
+                avail = RAF.read();
+            }
+            RAF.close();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addRegistro(ArrayList<String> campos) {
+        String temp = "";
+        for (int i = 0; i < campos.size(); i++) {
+            temp += campos.get(i);
+        }
+        try {
+            FileWriter writer = new FileWriter(archivo.getAbsolutePath(),true);
+            writer.write(temp);
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
