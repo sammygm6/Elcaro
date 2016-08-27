@@ -104,7 +104,7 @@ public class ARLF {
             int avail = RAF.read();
             while (avail != -1) {
                 AvailList.push(Integer.toString(avail));
-                RAF.seek(avail+1);
+                RAF.seek(avail + 1);
                 avail = RAF.read();
             }
             RAF.close();
@@ -120,15 +120,15 @@ public class ARLF {
             temp += campos.get(i);
         }
         try {
-            FileWriter writer = new FileWriter(archivo.getAbsolutePath(),true);
+            FileWriter writer = new FileWriter(archivo.getAbsolutePath(), true);
             writer.write(temp);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public boolean borrarCampo(String campo){
+
+    public boolean borrarCampo(String campo) {
         try {
             this.RAF = new RandomAccessFile(this.archivo, "rw");
             RAF.seek(2);
@@ -136,14 +136,14 @@ public class ARLF {
             int cont = 0;
             int caracter;
             String temp = "";
-            while((caracter = RAF.read()) != -1){
+            while ((caracter = RAF.read()) != -1) {
                 if (cont >= size) {
                     if (campo.equals(temp)) {
                         RAF.seek(1);
                         int tempC = RAF.read();
                         RAF.seek(pos);
                         RAF.write('*');
-                        RAF.seek(pos+1);//este pienso que no se ocupa
+                        RAF.seek(pos + 1);//este pienso que no se ocupa
                         RAF.write(tempC);
                         RAF.seek(1);
                         RAF.write(pos);
@@ -152,9 +152,9 @@ public class ARLF {
                     }
                     temp = "";
                     pos++;
-                    
+
                 }
-                temp += (char)caracter;
+                temp += (char) caracter;
                 cont++;
             }
             RAF.close();
@@ -162,5 +162,22 @@ public class ARLF {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void insertarCampo(String campo) {
+        if (this.AvailList.isEmpty()) {
+            System.out.println("No hay espacios, ingrese un nuevo registro, gracias");
+        } else {
+            try {
+                this.RAF = new RandomAccessFile(this.archivo, "rw");
+                int pos = Integer.parseInt(AvailList.pop());
+                RAF.seek(pos);
+                for (int i = 0; i < campo.length(); i++) {
+                    RAF.write(campo.charAt(i));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
