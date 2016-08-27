@@ -127,4 +127,38 @@ public class ARLF {
             e.printStackTrace();
         }
     }
+    
+    public boolean borrarCampo(String campo){
+        try {
+            this.RAF = new RandomAccessFile(this.archivo, "rw");
+            RAF.seek(2);
+            int pos = 0;
+            int cont = 0;
+            int caracter;
+            String temp = "";
+            while((caracter = RAF.read()) != -1){
+                if (cont >= size) {
+                    if (campo.equals(temp)) {
+                        RAF.seek(1);
+                        int tempC = RAF.read();
+                        RAF.seek(pos+1);
+                        RAF.write(tempC);
+                        RAF.seek(1);
+                        RAF.write(pos);
+                        RAF.close();
+                        return true;
+                    }
+                    temp = "";
+                    pos++;
+                    
+                }
+                temp += (char)caracter;
+                cont++;
+            }
+            RAF.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
