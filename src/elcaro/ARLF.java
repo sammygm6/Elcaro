@@ -143,7 +143,7 @@ public class ARLF {
                         int tempC = RAF.read();
                         RAF.seek(pos);
                         RAF.write('*');
-                        RAF.seek(pos+1);
+                        RAF.seek(pos+1);//este pienso que no se ocupa
                         RAF.write(tempC);
                         RAF.seek(1);
                         RAF.write(pos);
