@@ -5,12 +5,8 @@
  */
 package elcaro;
 
-<<<<<<< HEAD
-=======
 import java.io.*;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,7 +17,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Bandido
  */
->>>>>>> JuanyR
 public class Frame extends javax.swing.JFrame {
 
     /**
