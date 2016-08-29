@@ -150,8 +150,6 @@ public class Frame extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jButton26 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -993,16 +991,16 @@ public class Frame extends javax.swing.JFrame {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(93, 93, 93)
                 .addComponent(jButton25)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
+                .addContainerGap(238, Short.MAX_VALUE)
                 .addComponent(jButton25)
-                .addGap(45, 45, 45))
+                .addGap(89, 89, 89))
         );
 
         jTabbedPane4.addTab("Agregar", jPanel12);
@@ -1101,18 +1099,6 @@ public class Frame extends javax.swing.JFrame {
             }
         });
         jd_registroLV.getContentPane().add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 140, 40));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jd_registroLV.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 560, 360));
 
         jLabel41.setFont(new java.awt.Font("Poor Richard", 1, 70)); // NOI18N
         jLabel41.setText("M a n e j o  d e  R e g i s t r o");
@@ -1279,14 +1265,14 @@ public class Frame extends javax.swing.JFrame {
         for (int i = 0; i < campos; i++) {
             listaCampos[i]= JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1));
         }
-        
+        jTextField10.setText("");
         File f = new File("./" + nombre + ".txt");
         if (f.exists()) {
             JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
         } else{
+            JOptionPane.showMessageDialog(this, "Se ha creado la tabla");
             ARLV a = new ARLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
             a.crearArchivoLV();
-            
         }
         
     }//GEN-LAST:event_jButton13MouseClicked
@@ -1470,6 +1456,7 @@ public class Frame extends javax.swing.JFrame {
         if (op == JFileChooser.APPROVE_OPTION) {
             this.activePath = "./archivos/" + fc.getSelectedFile().getName();
         }
+        
     }
 
     public void anadirRegistro() throws FileNotFoundException, IOException {
@@ -1487,7 +1474,7 @@ public class Frame extends javax.swing.JFrame {
             archivo = fc.getSelectedFile();
             archivo = fc.getSelectedFile();
             ARLV a = new ARLV();
-            a.seleccionarArchivo(archivo);  
+            a.seleccionarArchivo(this, archivo);  
         }
     }
 
@@ -1627,7 +1614,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1635,7 +1621,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JComboBox jc_tecnica;
