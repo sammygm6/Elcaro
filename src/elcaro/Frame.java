@@ -1112,6 +1112,7 @@ public class Frame extends javax.swing.JFrame {
             e.printStackTrace();
         }
         //limpiando text fields
+        JOptionPane.showMessageDialog(this, "Nueva tabla creada con exito");
         this.tf_NuevoNombreTabla.setText("");
         this.tf_Nuevo_SizeOfRegistry.setText("");
         this.tf_Nuevo_SizeOfField.setText("");
@@ -1175,8 +1176,11 @@ public class Frame extends javax.swing.JFrame {
         for (int i = 0; i < this.tablasLF.size(); i++) {
             if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
                 tablasLF.get(i).borrarCampo(campoABorrar);
+                JOptionPane.showMessageDialog(this, "Se elimino exitosamente");
+                break;
             }
         }
+        this.tf_Eliminar_Campo.setText("");
     }//GEN-LAST:event_jButton9MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {

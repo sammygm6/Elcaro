@@ -160,6 +160,7 @@ public class ARLF {
 
     public void borrar(int fieldNumberAt){
         try {
+            this.AvailList.push(Integer.toString(fieldNumberAt*this.sizeofField+3));
             this.RAF = new RandomAccessFile(this.archivo, "rw");
             RAF.seek(sizeofHeader-1);
             int inicio = RAF.read();
@@ -191,7 +192,7 @@ public class ARLF {
                 if ((char)caracter == ' ') {
                     if(campoTmp.equals(campo)){
                         borrar(fieldNumberAt);
-                        this.AvailList.push(Integer.toString(fieldNumberAt*sizeofHeader+3));
+                        int position = fieldNumberAt*sizeofHeader+3+1;
                         encontro = true;
                     }else{
                         campoTmp = "";
@@ -236,12 +237,25 @@ public class ARLF {
             try {
                 this.RAF = new RandomAccessFile(this.archivo, "rw");
                 int pos = Integer.parseInt(AvailList.pop());
+                System.out.println(pos+" position");
                 RAF.seek(pos);
-                for (int i = 0; i < campo.length(); i++) {
-                    RAF.write(campo.charAt(i));
+                int contador = 0;
+                for (int i = 0; i < this.sizeofField; i++) {
+                    if (contador < campo.length()) {
+                        RAF.write(campo.charAt(i));
+                    }else{
+                        RAF.write(' ');
+                    }
+                    contador++;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    RAF.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
