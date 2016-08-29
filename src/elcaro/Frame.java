@@ -1086,6 +1086,7 @@ public class Frame extends javax.swing.JFrame {
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
         try {
             openTxt();
+            this.getPath();
         } catch (IOException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
