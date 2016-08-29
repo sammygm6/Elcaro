@@ -25,6 +25,11 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
+        try {
+            File archivo = new File("./directorios");
+            
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -42,19 +47,25 @@ public class Frame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        tf_NuevoNombreTabla = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        tf_Nuevo_SizeOfRegistry = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        tf_Nuevo_SizeOfField = new javax.swing.JTextField();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        tf_NuevoCampo_Campo = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jButton39 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tf_Modificar_NombreTabla = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tf_Modificar_SizeOfField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        tf_Modificar_SizeOfRegistry = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton37 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -127,6 +138,7 @@ public class Frame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
+        jd_longitudFija.setTitle("ElCaro");
         jd_longitudFija.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton15.setBackground(new java.awt.Color(153, 153, 153));
@@ -148,24 +160,29 @@ public class Frame extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/021_113_layout_wireframe_grid_table-128.png"))); // NOI18N
         jButton2.setText("Crear Tabla");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Nombre:");
 
-        jTextField7.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_NuevoNombreTabla.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Numero de Campos:");
 
-        jTextField8.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Nuevo_SizeOfRegistry.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Tamaño de Campos:");
 
-        jTextField9.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Nuevo_SizeOfField.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,9 +196,9 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(jLabel16))
                 .addGap(151, 151, 151)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Nuevo_SizeOfField, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                    .addComponent(tf_Nuevo_SizeOfRegistry, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                    .addComponent(tf_NuevoNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(275, 275, 275)
@@ -194,21 +211,92 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(115, 115, 115)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_NuevoNombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Nuevo_SizeOfRegistry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Nuevo_SizeOfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jButton2)
                 .addGap(48, 48, 48))
         );
 
         jTabbedPane1.addTab("Crear", jPanel1);
+
+        jPanel11.setBackground(new java.awt.Color(51, 51, 0));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Nuevo Campo:");
+
+        tf_NuevoCampo_Campo.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Seleccionar Tabla");
+
+        jButton39.setBackground(new java.awt.Color(102, 102, 0));
+        jButton39.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
+        jButton39.setForeground(new java.awt.Color(51, 51, 0));
+        jButton39.setText("Seleccionar");
+        jButton39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton39MouseClicked(evt);
+            }
+        });
+
+        jButton8.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/021_113_layout_wireframe_grid_table-128.png"))); // NOI18N
+        jButton8.setText("Guardar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(139, 139, 139))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151)
+                        .addComponent(tf_NuevoCampo_Campo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(139, Short.MAX_VALUE))))
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(jButton8)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel40)
+                    .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_NuevoCampo_Campo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(121, 121, 121)
+                .addComponent(jButton8)
+                .addGap(54, 54, 54))
+        );
+
+        jTabbedPane1.addTab("Agregar Campos", jPanel11);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 0));
 
@@ -220,19 +308,19 @@ public class Frame extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Nombre:");
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Modificar_NombreTabla.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Numero de Campos:");
 
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Modificar_SizeOfField.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Tamaño de Campos:");
 
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Modificar_SizeOfRegistry.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jButton7.setBackground(new java.awt.Color(204, 204, 204));
         jButton7.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
@@ -263,11 +351,11 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(jLabel13))
                 .addGap(97, 97, 97)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                    .addComponent(tf_Modificar_SizeOfRegistry, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                    .addComponent(tf_Modificar_SizeOfField, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_Modificar_NombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -286,15 +374,15 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Modificar_NombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Modificar_SizeOfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Modificar_SizeOfRegistry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jButton7)
                 .addGap(62, 62, 62))
@@ -407,7 +495,7 @@ public class Frame extends javax.swing.JFrame {
 
         jc_tecnica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indice", "Delimitadores", "Key Value" }));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -595,6 +683,11 @@ public class Frame extends javax.swing.JFrame {
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton10MouseClicked(evt);
+            }
+        });
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
         jd_menuTabla.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 380, 70));
@@ -970,11 +1063,65 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton23MouseClicked
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // evento para crear una nueva tabla o archivo
+        String newPath = "./archivos/"+this.tf_NuevoNombreTabla.getText()+".txt";
+        int FieldSize = Integer.parseInt(this.tf_Nuevo_SizeOfField.getText());
+        int RegistrySize = Integer.parseInt(this.tf_Nuevo_SizeOfRegistry.getText());
+        System.out.println(FieldSize);
+        System.out.println(RegistrySize);
+        ////////////////////////////////////////////////////////////////////////
+        try {
+            FileWriter writer = new FileWriter("./backup/directorios.txt",true);
+            BufferedWriter Bwriter = new BufferedWriter(writer);
+            
+            Bwriter.write(this.tf_NuevoNombreTabla.getText()+".txt");
+            Bwriter.newLine();
+            Bwriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //limpiando text fields
+        this.tf_NuevoNombreTabla.setText("");
+        this.tf_Nuevo_SizeOfRegistry.setText("");
+        this.tf_Nuevo_SizeOfField.setText("");
+        //
+        ARLF nuevaTabla = new ARLF(newPath,FieldSize,RegistrySize);
+        this.tablasLF.add(nuevaTabla);
+        System.out.println(tablasLF.size()+" size de tablasLF");
+        ////////////////////////////////////////////////////////////////////////
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton39MouseClicked
+        // evento para seleccionar tabla para agregar campos
+        try {
+            getPath();
+            System.out.println(this.activePath+" troll");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton39MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // evento para agregar un nuevo campo
+        for (int i = 0; i < this.tablasLF.size(); i++) {
+            if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
+                tablasLF.get(i).insertarCampo(this.tf_NuevoCampo_Campo.getText());
+            }else{
+            }
+        }
+        this.tf_NuevoCampo_Campo.setText("");
+    }//GEN-LAST:event_jButton8MouseClicked
+
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
         fc.setFileFilter(filtro);
-        File dirFile = new File("./");
+        File dirFile = new File("./archivos");
         fc.setCurrentDirectory(dirFile);
         File archivo;
         FileReader fr = null;
@@ -1000,6 +1147,20 @@ public class Frame extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+    
+    public void getPath() throws FileNotFoundException, IOException{
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
+        fc.setFileFilter(filtro);
+        File dirFile = new File("./archivos");
+        fc.setCurrentDirectory(dirFile);
+        int op = fc.showOpenDialog(this);
+        String tabla = "";
+        if (op == JFileChooser.APPROVE_OPTION) {
+            System.out.println("aca se activo aproveoption");
+            this.activePath = "./archivos/"+fc.getSelectedFile().getName();
         }
     }
     
@@ -1123,9 +1284,11 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1138,6 +1301,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1157,12 +1321,14 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1180,17 +1346,20 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JComboBox jc_tecnica;
     private javax.swing.JDialog jd_funciones;
     private javax.swing.JDialog jd_longitudFija;
     private javax.swing.JDialog jd_longitudVariable;
     private javax.swing.JDialog jd_menuTabla;
     private javax.swing.JDialog jd_registro;
+    private javax.swing.JTextField tf_Modificar_NombreTabla;
+    private javax.swing.JTextField tf_Modificar_SizeOfField;
+    private javax.swing.JTextField tf_Modificar_SizeOfRegistry;
+    private javax.swing.JTextField tf_NuevoCampo_Campo;
+    private javax.swing.JTextField tf_NuevoNombreTabla;
+    private javax.swing.JTextField tf_Nuevo_SizeOfField;
+    private javax.swing.JTextField tf_Nuevo_SizeOfRegistry;
     // End of variables declaration//GEN-END:variables
+ArrayList<ARLF> tablasLF = new ArrayList();
+String activePath = "";
 }
