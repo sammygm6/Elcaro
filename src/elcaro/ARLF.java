@@ -3,6 +3,7 @@ package elcaro;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Stack;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class ARLF {

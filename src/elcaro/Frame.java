@@ -987,6 +987,11 @@ public class Frame extends javax.swing.JFrame {
 
         jButton25.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
         jButton25.setText("Agregar");
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton25MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1276,18 +1281,18 @@ public class Frame extends javax.swing.JFrame {
 
         }
         for (int i = 0; i < campos; i++) {
-            listaCampos[i]= JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1));
+            listaCampos[i] = JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1));
         }
         jTextField10.setText("");
         File f = new File("./" + nombre + ".txt");
         if (f.exists()) {
             JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
-        } else{
+        } else {
             JOptionPane.showMessageDialog(this, "Se ha creado la tabla");
             ARLV a = new ARLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
             a.crearArchivoLV();
         }
-        
+
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
@@ -1357,7 +1362,7 @@ public class Frame extends javax.swing.JFrame {
         String CampoNuevo = this.tf_Modificar_NombreCampoNuevo.getText();
         for (int i = 0; i < this.tablasLF.size(); i++) {
             if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
-                tablasLF.get(i).modificarCampo(CampoViejo,CampoNuevo);
+                tablasLF.get(i).modificarCampo(CampoViejo, CampoNuevo);
                 JOptionPane.showMessageDialog(this, "Se modifico exitosamente");
                 this.tf_Modificar_NombreCampoNuevo.setText("");
                 this.tf_Modificar_NombreCampoViejo.setText("");
@@ -1421,11 +1426,24 @@ public class Frame extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         tableModel.setRowCount(0);
         try {
-            anadirRegistro();
+            seleccionarTabla();
         } catch (IOException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton26MouseClicked
+
+    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
+        if (rgstro.getListaCampos() != null) {
+            String registro = "";
+            String[] listaCampos = rgstro.getListaCampos();
+            for (int i = 0; i < listaCampos.length; i++) {
+                registro += JOptionPane.showInputDialog(this, ("Ingresar " + listaCampos[i] + ":"));
+            }
+            rgstro.agregarRegistro(registro);
+        }else{
+            JOptionPane.showMessageDialog(this, "Primero debe seleccionar una tabla");
+        }
+    }//GEN-LAST:event_jButton25MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
@@ -1471,10 +1489,10 @@ public class Frame extends javax.swing.JFrame {
         if (op == JFileChooser.APPROVE_OPTION) {
             this.activePath = "./archivos/" + fc.getSelectedFile().getName();
         }
-        
+
     }
 
-    public void anadirRegistro() throws FileNotFoundException, IOException {
+    public void seleccionarTabla() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
         fc.setFileFilter(filtro);
@@ -1488,12 +1506,9 @@ public class Frame extends javax.swing.JFrame {
         if (op == JFileChooser.APPROVE_OPTION) {
             archivo = fc.getSelectedFile();
             archivo = fc.getSelectedFile();
-            ARLV a = new ARLV();
-            a.seleccionarArchivo(this, archivo, jTable2 );  
+            rgstro.seleccionarArchivo(archivo, jTable2);
         }
     }
-
-    
 
     /**
      * @param args the command line arguments
@@ -1657,4 +1672,5 @@ public class Frame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList<ARLF> tablasLF = new ArrayList();
     String activePath = "";
+    ARLV rgstro = new ARLV();
 }
