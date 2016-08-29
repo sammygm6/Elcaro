@@ -70,6 +70,8 @@ public class Frame extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jButton38 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        tf_Eliminar_Campo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -387,37 +389,64 @@ public class Frame extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/021_113_layout_wireframe_grid_table-128.png"))); // NOI18N
         jButton9.setText("Eliminar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         jButton38.setBackground(new java.awt.Color(102, 102, 0));
         jButton38.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
         jButton38.setForeground(new java.awt.Color(51, 51, 0));
         jButton38.setText("Seleccionar");
+        jButton38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton38MouseClicked(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Nombre del Campo:");
+
+        tf_Eliminar_Campo.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(295, 295, 295)
-                .addComponent(jButton9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(jButton9))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(tf_Eliminar_Campo))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
                     .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(68, 68, 68)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_Eliminar_Campo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(93, 93, 93)
                 .addComponent(jButton9)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
@@ -1104,8 +1133,40 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // evento para modificar un campo
-        
+        String CampoViejo = this.tf_Modificar_NombreCampoViejo.getText();
+        String CampoNuevo = this.tf_Modificar_NombreCampoNuevo.getText();
+        for (int i = 0; i < this.tablasLF.size(); i++) {
+            if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
+                tablasLF.get(i).modificarCampo(CampoViejo,CampoNuevo);
+                JOptionPane.showMessageDialog(this, "Se modifico exitosamente");
+                this.tf_Modificar_NombreCampoNuevo.setText("");
+                this.tf_Modificar_NombreCampoViejo.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocurrio algun problema");
+                this.tf_Modificar_NombreCampoNuevo.setText("");
+                this.tf_Modificar_NombreCampoViejo.setText("");
+            }
+        }
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton38MouseClicked
+        // evento para seleccionar archivo para borrar
+        try {
+            this.getPath();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton38MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // boton para eliminar algun campo
+        String campoABorrar = this.tf_Eliminar_Campo.getText();
+        for (int i = 0; i < this.tablasLF.size(); i++) {
+            if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
+                tablasLF.get(i).borrarCampo(campoABorrar);
+            }
+        }
+    }//GEN-LAST:event_jButton9MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
@@ -1283,6 +1344,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1340,6 +1402,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JDialog jd_longitudVariable;
     private javax.swing.JDialog jd_menuTabla;
     private javax.swing.JDialog jd_registro;
+    private javax.swing.JTextField tf_Eliminar_Campo;
     private javax.swing.JTextField tf_Modificar_NombreCampoNuevo;
     private javax.swing.JTextField tf_Modificar_NombreCampoViejo;
     private javax.swing.JTextField tf_NuevoCampo_Campo;

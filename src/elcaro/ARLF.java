@@ -16,6 +16,7 @@ public class ARLF {
     private RandomAccessFile RAF;
     private int address;
     private Stack<String> AvailList = new Stack();
+    private int header = 3;
 
     public ARLF() {
     }
@@ -57,7 +58,7 @@ public class ARLF {
     }
 
     public int getAddress(int RecordNumber) {
-        return RecordNumber * sizeofField + 2;//el +2 es porque el "header" ocupa 2 espacios el primer byte el sizeofField y el segundo el availList
+        return RecordNumber * sizeofField + header;
     }
 
     public ARLF(File registro) {
@@ -157,52 +158,55 @@ public class ARLF {
         }
     }
 
-    public boolean borrarCampo(String campo) {
+    public void intercambiar(int fieldNumberAt){
+        
+    }
+
+    public void borrarCampo(String campo) {
         try {
             this.RAF = new RandomAccessFile(this.archivo, "rw");
-            RAF.seek(3);
-            int pos = 0;
-            int cont = 0;
-            int caracter;
-            String temp = "";
-            while ((caracter = RAF.read()) != '0') {
-                if (cont >= sizeofField) {
-                    if (campo.equals(temp)) {
-                        RAF.seek(1);
-                        int tempC = RAF.read();
-                        RAF.seek(pos);
-                        RAF.write('*');
-                        RAF.write(tempC);
-                        RAF.seek(1);
-                        RAF.write(pos);
-                        RAF.close();
-                        return true;
+            RAF.seek(header);
+            String campoTmp;
+            campoTmp = "";
+            boolean encontro = false;
+            int fieldNumberAt = 0;
+            while(!encontro){
+            for (int i = 0; i < this.sizeofField; i++) {
+                int caracter = RAF.read();
+                if ((char)caracter == ' ') {
+                    if(campoTmp.equals(campo)){
+                        in
+                        encontro = true;
+                    }else{
+                        campoTmp = "";
                     }
-                    temp = "";
-                    pos++;
-
+                }else{
+                    campoTmp += (char)caracter;
+                    System.out.println(campoTmp+" campoTmp");
                 }
-                temp += (char) caracter;
-                cont++;
             }
-            RAF.close();
+            fieldNumberAt++;
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+        } finally {
+            try {
+                RAF.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return false;
     }
 
     public void insertarCampo(String campo) {
         if (this.AvailList.isEmpty()) {
-            System.out.println(this.sizeofField);
             try {
                 this.RAF = new RandomAccessFile(this.archivo, "rw");
                 RAF.seek(this.archivo.length());
                 int contador = 0;
-                while(contador < this.sizeofField){
+                while (contador < this.sizeofField) {
                     if (contador < campo.length()) {
                         RAF.write(campo.charAt(contador));
-                    }else{
+                    } else {
                         RAF.write(' ');
                     }
                     contador++;
@@ -226,9 +230,61 @@ public class ARLF {
         }
     }
 
-    public void addField(ArrayList<String> fields) {
-        if (fields.size() == 1) {
-            insertarCampo(fields.get(0));
+    public void modificarCampo(String campoViejo, String campoNuevo) {
+        try {
+            this.RAF = new RandomAccessFile(this.archivo, "rw");
+            RAF.seek(header);
+            String campoTmp;
+            campoTmp = "";
+            boolean encontro = false;
+            int fieldNumberAt = 0;
+            while(!encontro){
+            for (int i = 0; i < this.sizeofField; i++) {
+                int caracter = RAF.read();
+                if ((char)caracter == ' ') {
+                    if(campoTmp.equals(campoViejo)){
+                        insertarCampo(fieldNumberAt,campoNuevo);
+                        encontro = true;
+                    }else{
+                        campoTmp = "";
+                    }
+                }else{
+                    campoTmp += (char)caracter;
+                    System.out.println(campoTmp+" campoTmp");
+                }
+            }
+            fieldNumberAt++;
+            }
+        } catch (Exception e) {
+        } finally {
+            try {
+                RAF.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void insertarCampo(int fieldNumber, String campoNuevo){
+        try {
+            this.RAF = new RandomAccessFile(this.archivo, "rw");
+            RAF.seek(fieldNumber*this.sizeofField+3);
+            int contador = 0;
+            while(contador < this.sizeofField){
+                if (contador < campoNuevo.length()) {
+                    RAF.write(campoNuevo.charAt(contador));
+                }else{
+                    RAF.write(' ');
+                }
+                contador++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                RAF.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
