@@ -66,6 +66,12 @@ public class Frame extends javax.swing.JFrame {
         jButton38 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         tf_Eliminar_Campo = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
+        jButton40 = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        jButton41 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -444,6 +450,85 @@ public class Frame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
+
+        jPanel12.setBackground(new java.awt.Color(51, 51, 0));
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("Seleccionar Tabla");
+
+        jButton12.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/021_113_layout_wireframe_grid_table-128.png"))); // NOI18N
+        jButton12.setText("Graficar");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+
+        jButton40.setBackground(new java.awt.Color(102, 102, 0));
+        jButton40.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
+        jButton40.setForeground(new java.awt.Color(51, 51, 0));
+        jButton40.setText("Seleccionar");
+        jButton40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton40MouseClicked(evt);
+            }
+        });
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Seleccionar Tabla");
+
+        jButton41.setBackground(new java.awt.Color(102, 102, 0));
+        jButton41.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
+        jButton41.setForeground(new java.awt.Color(51, 51, 0));
+        jButton41.setText("Seleccionar");
+        jButton41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton41MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(jButton12))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(167, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel32)
+                    .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel39)
+                    .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84)
+                .addComponent(jButton12)
+                .addGap(24, 24, 24))
+        );
+
+        jTabbedPane1.addTab("Graficar", jPanel12);
 
         jd_longitudFija.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 810, 430));
 
@@ -1178,6 +1263,55 @@ public class Frame extends javax.swing.JFrame {
         this.tf_Eliminar_Campo.setText("");
     }//GEN-LAST:event_jButton9MouseClicked
 
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // evento para graficar
+        ArrayList<String> Campos1 = new ArrayList();
+        ArrayList<String> Campos2 = new ArrayList();
+        boolean campos1 = false;
+        boolean campos2 = false; 
+        for (int i = 0; i < this.tablasLF.size(); i++) {
+            System.out.println("Entro al for");
+            if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
+                Campos1 = tablasLF.get(i).getCampos();
+                campos1 = true;
+            }
+            if (this.activePath2.equals(this.tablasLF.get(i).getPath())) {
+                Campos2 = tablasLF.get(i).getCampos();
+                campos2 = true;
+            }
+        }
+        if (campos1 && campos2) {
+            JOptionPane.showMessageDialog(this, "Se encontraron ambas tablas!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Ocurrio algun error");
+        }
+        for (int i = 0; i < Campos1.size(); i++) {
+            System.out.println(Campos1.get(i)+" Campos1: "+i);
+        }
+        for (int i = 0; i < Campos2.size(); i++) {
+            System.out.println(Campos2.get(i)+" Campos2: "+i);
+        }
+        
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton40MouseClicked
+        // evento para el panel modificar 1er directorio
+        try {
+            this.getPath();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton40MouseClicked
+
+    private void jButton41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton41MouseClicked
+        // evento para el panel modificar 2ndo directorio
+        try {
+            this.getAnotherPath();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton41MouseClicked
+
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
@@ -1221,6 +1355,19 @@ public class Frame extends javax.swing.JFrame {
         String tabla = "";
         if (op == JFileChooser.APPROVE_OPTION) {
             this.activePath = "./archivos/" + fc.getSelectedFile().getName();
+        }
+    }
+    
+    public void getAnotherPath() throws FileNotFoundException, IOException {
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
+        fc.setFileFilter(filtro);
+        File dirFile = new File("./archivos");
+        fc.setCurrentDirectory(dirFile);
+        int op = fc.showOpenDialog(this);
+        String tabla = "";
+        if (op == JFileChooser.APPROVE_OPTION) {
+            this.activePath2 = "./archivos/" + fc.getSelectedFile().getName();
         }
     }
 
@@ -1303,6 +1450,7 @@ public class Frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -1324,6 +1472,8 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton38;
     private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1352,12 +1502,14 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
@@ -1367,6 +1519,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1400,4 +1553,5 @@ public class Frame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList<ARLF> tablasLF = new ArrayList();
     String activePath = "";
+    String activePath2 = "";
 }

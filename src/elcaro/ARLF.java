@@ -280,7 +280,6 @@ public class ARLF {
                     }
                 }else{
                     campoTmp += (char)caracter;
-                    System.out.println(campoTmp+" campoTmp");
                 }
             }
             fieldNumberAt++;
@@ -316,5 +315,41 @@ public class ARLF {
                 e.printStackTrace();
             }
         }
+    }
+    public ArrayList<String> getCampos(){
+        ArrayList<String> campos = new ArrayList();
+        try {
+            try {
+            this.RAF = new RandomAccessFile(this.archivo, "rw");
+            RAF.seek(sizeofHeader);
+            String campoTmp;
+            campoTmp = "";
+            boolean encontro = false;
+            int fieldNumberAt = 0;
+            while(RAF.getFilePointer()!= archivo.length()){
+            for (int i = 0; i < this.sizeofField; i++) {
+                int caracter = RAF.read();
+                if ((char)caracter == ' ') {
+                    campos.add(campoTmp);
+                    System.out.println(campoTmp+" campoTmpif");
+                    campoTmp = "";
+                }else{
+                    campoTmp += (char)caracter;
+                    System.out.println(campoTmp+" campoTmpelse");
+                }
+            }
+            fieldNumberAt++;
+            }
+        } catch (Exception e) {
+        } finally {
+            try {
+                RAF.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        } catch (Exception e) {
+        }
+        return campos;
     }
 }
