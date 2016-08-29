@@ -1258,12 +1258,12 @@ public class Frame extends javax.swing.JFrame {
          Numero de Tecnicas
          */
 
-        ArrayList<String> listaCampos = new ArrayList();
         String nombre = jTextField10.getText();
         char tipoRegistro = 'V';
         int campos = (int) jSpinner1.getValue();
         String tecn = jc_tecnica.getSelectedItem().toString();
         int tecnica = 1;
+        String[] listaCampos = new String[campos];
         switch (tecn) {
             case "Indice":
                 tecnica = 1;
@@ -1277,15 +1277,15 @@ public class Frame extends javax.swing.JFrame {
 
         }
         for (int i = 0; i < campos; i++) {
-            listaCampos.add(JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1)));
+            listaCampos[i]= JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1));
         }
         
         File f = new File("./" + nombre + ".txt");
         if (f.exists()) {
             JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
         } else{
-            ARLV a = new ARLV();
-            a.crearArchivoLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
+            ARLV a = new ARLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
+            a.crearArchivoLV();
             
         }
         
@@ -1419,7 +1419,11 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton24MouseClicked
 
     private void jButton26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseClicked
-        // TODO add your handling code here:
+        try {
+            anadirRegistro();
+        } catch (IOException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton26MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
@@ -1481,24 +1485,9 @@ public class Frame extends javax.swing.JFrame {
         String tabla = "";
         if (op == JFileChooser.APPROVE_OPTION) {
             archivo = fc.getSelectedFile();
-            try {
-                fr = new FileReader(archivo);
-                br = new BufferedReader(fr);
-                String linea;
-                if ((linea = br.readLine()) != null) {
-                    Archivo a = new Archivo();
-                    a.insertarRegistro(linea);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    br.close();
-                    fr.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            archivo = fc.getSelectedFile();
+            ARLV a = new ARLV();
+            a.seleccionarArchivo(archivo);  
         }
     }
 
