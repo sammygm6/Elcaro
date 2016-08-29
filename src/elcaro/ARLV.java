@@ -5,23 +5,15 @@
  */
 package elcaro;
 
-import java.awt.Component;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,93 +21,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ARLV {
 
-    char tipoRegistro;
+    ArrayList<String> listaCampos;
     String nombre;
+    char tipoRegistro;
     int campos;
-    int posicionInicial;
-    int tecnica;
-    String[] listaCampos;
-
+    String tecn;
     private File archivo;
 
     private RandomAccessFile RAF;
 
-    public ARLV() {
-    }
-
-    public ARLV(char tipoRegistro, String nombre, int campos, int tecnica, String[] listaCampos) {
-        this.tipoRegistro = tipoRegistro;
-        this.nombre = nombre;
-        this.campos = campos;
-        this.tecnica = tecnica;
-        this.listaCampos = listaCampos;
-    }
-
-    public char getTipoRegistro() {
-        return tipoRegistro;
-    }
-
-    public void setTipoRegistro(char tipoRegistro) {
-        this.tipoRegistro = tipoRegistro;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCampos() {
-        return campos;
-    }
-
-    public void setCampos(int campos) {
-        this.campos = campos;
-    }
-
-    public int getBorrado() {
-        return posicionInicial;
-    }
-
-    public void setBorrado(int borrado) {
-        this.posicionInicial = borrado;
-    }
-
-    public int getTecnica() {
-        return tecnica;
-    }
-
-    public void setTecnica(int tecnica) {
-        this.tecnica = tecnica;
-    }
-
-    public String[] getListaCampos() {
-        return listaCampos;
-    }
-
-    public void setListaCampos(String[] listaCampos) {
-        this.listaCampos = listaCampos;
-    }
-
-    public File getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(File archivo) {
-        this.archivo = archivo;
-    }
-
-    public RandomAccessFile getRAF() {
-        return RAF;
-    }
-
-    public void setRAF(RandomAccessFile RAF) {
-        this.RAF = RAF;
-    }
-
-    public void crearArchivoLV() {
+    public void crearArchivoLV(char tipoRegistro, String nombre, int campos, int tecnica, ArrayList<String> camposL) {
         File f = new File("./" + nombre + ".txt");
         try {
             FileWriter w = new FileWriter(f);
@@ -123,16 +38,11 @@ public class ARLV {
             PrintWriter wr = new PrintWriter(bw);
             String nombreCampos = "";
             for (int i = 0; i < campos; i++) {
-                nombreCampos += listaCampos[i] + ";";
+                nombreCampos += camposL.get(i) + ";";
             }
             nombreCampos = nombreCampos.substring(0, nombreCampos.length() - 1);
-            String concat = tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-:" + nombreCampos + "|";
-            if (concat.length() < 100) {
-                wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-" + (concat.length() + 3) + ":" + nombreCampos);//escribimos en el archivo
-            } else {
-                wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-" + (concat.length() + 4) + ":" + nombreCampos);//escribimos en el archivo
-            }
-            wr.append(System.lineSeparator());
+            wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-" + (nombreCampos.length() + 2) + ":");//escribimos en el archivo
+            wr.append(nombreCampos + "\n");
             wr.close();
             bw.close();
         } catch (IOException e) {
@@ -140,117 +50,64 @@ public class ARLV {
         };
     }
 
-    public void seleccionarArchivo( File archivo, JTable jTable) {
-        FileReader fr = null;
-        BufferedReader br = null;
+    public void insertarRegistro(String texto) {
+        String[] especificos = texto.split(":");
+        String[] codigo = especificos[0].split("-");
+        String[] campos = especificos[1].split(";");
+        /*
+         formato codigo de inicio (V-Tabla1-5-1-0)
+         ---Significado---
+         1)Si es longitud variable o fija
+         2)Nombre de la Tabla
+         3)Numero de campos
+         4)Tecnica de Registro
+         1. Indice
+         2. Delimitadores
+         3. Key Value
+         5)Primera posicion borrada
+         Numero de Tecnicas
+         */
+        char tipoRegistro = codigo[0].charAt(0);
+        String nombre = codigo[1];
+        int Ncampos = Integer.parseInt(codigo[2]);
+        int tecnica = Integer.parseInt(codigo[3]);
+        int borrado = Integer.parseInt(codigo[4]);
+        String[] registro = new String[Ncampos];
+        for (int i = 0; i < Ncampos; i++) {
+            registro[i] = JOptionPane.showInputDialog(this, "Ingresar " + campos[i]);
+        }
+
+        switch (tecnica) {
+            case 1: {//indice
+
+                break;
+            }
+            case 2: {//delimitadores
+
+                break;
+            }
+            case 3: {//key value
+
+                break;
+            }
+        }
+    }
+
+    /*
+        File archivo = null;
+        Scanner sc = null;
         try {
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            String linea = br.readLine();
-            if(linea.charAt(0)!='V'){
-                System.out.println("El archivo no pertenece a longitud variable");
-                JOptionPane.showMessageDialog(null, "El archivo no pertenece a longitud variable");
-            }else{
-                if (linea  != null) {
-                    datosClase(linea, jTable);
-                }
+            archivo = new File("./"+nombre+".txt");
+            sc = new Scanner(archivo);
+            sc.useDelimiter("\n");
+            while (sc.hasNext()) {
+                System.out.println(sc.next());
+                sc.nextInt();
+                sc.next();
             }
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
-            try {
-                br.close();
-                fr.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            sc.close();
         }
-    }
-
-    public void datosClase(String texto, JTable jTable) throws IOException {
-        String[] especificos = texto.split(":");
-
-        String[] codigo = especificos[0].split("-");
-        
-        listaCampos = especificos[1].split(";");
-        
-        tipoRegistro = codigo[0].charAt(0);
-        nombre = codigo[1];
-        campos = Integer.parseInt(codigo[2]);
-        tecnica = Integer.parseInt(codigo[3]);
-        posicionInicial = Integer.parseInt(codigo[4]);
-        archivo = new File("./" + nombre + ".txt", "txt");
-        getJTable(jTable);
-    }
-
-    public void agregarRegistro(String registro) {
-        if (tecnica == 1 || tecnica == 2) {
-            
-        } else if (tecnica == 3) {
-            
-        }
-    }
-
-    public void Posicion() {
-        int pos = 0;
-        int nGuiones = 0;
-        long size = 0;
-        try {
-            RAF = new RandomAccessFile(archivo, "rw");
-            size = RAF.length();
-            for (int i = 0; i < RAF.length(); i++) {
-                RAF.seek(i);
-                char delim = (char) RAF.readByte();
-                if (delim == '-') {
-                    nGuiones++;
-                }
-                if (nGuiones == 4) {
-                    pos = i + 1;
-                    nGuiones++;
-                }
-            }
-        } catch (Exception ex) {
-            System.out.println("Error en Segundo try catch");
-        }
-    }
-
-    private void getJTable(JTable jTable) throws IOException {
-        DefaultTableModel contactTableModel = (DefaultTableModel) jTable
-                .getModel();
-        contactTableModel.setColumnCount(campos);
-        contactTableModel.setColumnIdentifiers(listaCampos);
-        jTable.setModel(contactTableModel);
-        setUpTableData(jTable);
-    }
-
-    public void setUpTableData(JTable jTable) throws FileNotFoundException, IOException {
-        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
-        archivo = new File("./" + nombre + ".txt");
-        if (tecnica == 1 || tecnica == 2) {
-            RAF = new RandomAccessFile(this.archivo, "rw");
-            RAF.seek(0);
-            
-            String linea = RAF.readLine();
-            while ((linea = RAF.readLine()) != null) {
-                String[] data = linea.split(";");
-                tableModel.addRow(data);
-            }
-        } else if (tecnica == 3) {
-            RAF = new RandomAccessFile(archivo, "rw");
-            RAF.seek(0);
-            
-            String linea = RAF.readLine();
-            while ((linea = RAF.readLine()) != null) {
-                String[] data = linea.split(";");
-                String[] camps = new String[campos];
-                for (int i = 0; i < data.length; i++) {
-                    camps[i] = (data[i].split("="))[1];
-                }
-                tableModel.addRow(data);
-            }
-        }
-        jTable.setModel(tableModel);
-    }
-    //"\r\n"
-
+     */
 }

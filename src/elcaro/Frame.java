@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -133,28 +132,6 @@ public class Frame extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jd_menuRegistro = new javax.swing.JDialog();
-        jButton12 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jd_registroLV = new javax.swing.JDialog();
-        jButton24 = new javax.swing.JButton();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jPanel12 = new javax.swing.JPanel();
-        jButton25 = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
-        jButton32 = new javax.swing.JButton();
-        jPanel14 = new javax.swing.JPanel();
-        jButton33 = new javax.swing.JButton();
-        jPanel15 = new javax.swing.JPanel();
-        jButton34 = new javax.swing.JButton();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jButton26 = new javax.swing.JButton();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -937,195 +914,6 @@ public class Frame extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/238389__blue-texture-texture-background-wallpaper_p.jpg"))); // NOI18N
         jd_funciones.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 610));
 
-        jd_menuRegistro.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton12.setBackground(new java.awt.Color(255, 255, 255));
-        jButton12.setFont(new java.awt.Font("SimSun-ExtB", 0, 40)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(51, 51, 0));
-        jButton12.setText("LONGITUD VARIABLE");
-        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton12MouseClicked(evt);
-            }
-        });
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        jd_menuRegistro.getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 380, 70));
-
-        jButton21.setBackground(new java.awt.Color(255, 255, 255));
-        jButton21.setFont(new java.awt.Font("SimSun-ExtB", 0, 40)); // NOI18N
-        jButton21.setForeground(new java.awt.Color(51, 51, 0));
-        jButton21.setText("LONGITUD FIJA");
-        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton21MouseClicked(evt);
-            }
-        });
-        jd_menuRegistro.getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 380, 70));
-        jd_menuRegistro.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 350));
-
-        jd_registroLV.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton24.setBackground(new java.awt.Color(153, 153, 153));
-        jButton24.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
-        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/09_home-64.png"))); // NOI18N
-        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton24MouseClicked(evt);
-            }
-        });
-        jd_registroLV.getContentPane().add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 80, 80));
-
-        jTabbedPane4.setBackground(new java.awt.Color(204, 204, 204));
-        jTabbedPane4.setForeground(new java.awt.Color(51, 51, 0));
-        jTabbedPane4.setFont(new java.awt.Font("SimSun-ExtB", 0, 24)); // NOI18N
-
-        jPanel12.setBackground(new java.awt.Color(51, 51, 0));
-
-        jButton25.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
-        jButton25.setText("Agregar");
-        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton25MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jButton25)
-                .addContainerGap(99, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
-                .addComponent(jButton25)
-                .addGap(89, 89, 89))
-        );
-
-        jTabbedPane4.addTab("Agregar", jPanel12);
-
-        jPanel13.setBackground(new java.awt.Color(51, 51, 0));
-
-        jButton32.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
-        jButton32.setText("Modificar");
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jButton32)
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(289, Short.MAX_VALUE)
-                .addComponent(jButton32)
-                .addGap(38, 38, 38))
-        );
-
-        jTabbedPane4.addTab("Modificar", jPanel13);
-
-        jPanel14.setBackground(new java.awt.Color(51, 51, 0));
-
-        jButton33.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
-        jButton33.setText("Eliminar");
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jButton33)
-                .addContainerGap(131, Short.MAX_VALUE))
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(294, Short.MAX_VALUE)
-                .addComponent(jButton33)
-                .addGap(33, 33, 33))
-        );
-
-        jTabbedPane4.addTab("Eliminar", jPanel14);
-
-        jPanel15.setBackground(new java.awt.Color(51, 51, 0));
-
-        jButton34.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
-        jButton34.setText("Buscar");
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jButton34)
-                .addContainerGap(111, Short.MAX_VALUE))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jButton34)
-                .addGap(32, 32, 32))
-        );
-
-        jTabbedPane4.addTab("Buscar", jPanel15);
-
-        jd_registroLV.getContentPane().add(jTabbedPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 310, 430));
-
-        jLabel39.setFont(new java.awt.Font("Rockwell Condensed", 0, 24)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("L O N G I T U D  V A R I A B L E");
-        jd_registroLV.getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 300, 50));
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel32.setText("Modificar Tabla:");
-        jd_registroLV.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 240, -1));
-
-        jButton26.setBackground(new java.awt.Color(102, 102, 0));
-        jButton26.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
-        jButton26.setForeground(new java.awt.Color(51, 51, 0));
-        jButton26.setText("Seleccionar");
-        jButton26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton26MouseClicked(evt);
-            }
-        });
-        jd_registroLV.getContentPane().add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 140, 40));
-
-        jLabel41.setFont(new java.awt.Font("Poor Richard", 1, 70)); // NOI18N
-        jLabel41.setText("M a n e j o  d e  R e g i s t r o");
-        jd_registroLV.getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 810, -1));
-
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/black.png"))); // NOI18N
-        jd_registroLV.getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 960, 130));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jd_registroLV.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 570, 350));
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pagina Principal");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1219,10 +1007,10 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         this.setVisible(false);
-        jd_menuRegistro.setModal(true);
-        jd_menuRegistro.pack();
-        jd_menuRegistro.setLocationRelativeTo(this);
-        jd_menuRegistro.setVisible(true);
+        jd_registro.setModal(true);
+        jd_registro.pack();
+        jd_registro.setLocationRelativeTo(this);
+        jd_registro.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
@@ -1262,12 +1050,12 @@ public class Frame extends javax.swing.JFrame {
          Numero de Tecnicas
          */
 
+        ArrayList<String> listaCampos = new ArrayList();
         String nombre = jTextField10.getText();
         char tipoRegistro = 'V';
         int campos = (int) jSpinner1.getValue();
         String tecn = jc_tecnica.getSelectedItem().toString();
         int tecnica = 1;
-        String[] listaCampos = new String[campos];
         switch (tecn) {
             case "Indice":
                 tecnica = 1;
@@ -1281,18 +1069,18 @@ public class Frame extends javax.swing.JFrame {
 
         }
         for (int i = 0; i < campos; i++) {
-            listaCampos[i] = JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1));
+            listaCampos.add(JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1)));
         }
-        jTextField10.setText("");
+        
         File f = new File("./" + nombre + ".txt");
         if (f.exists()) {
             JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
-        } else {
-            JOptionPane.showMessageDialog(this, "Se ha creado la tabla");
-            ARLV a = new ARLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
-            a.crearArchivoLV();
+        } else{
+            ARLV a = new ARLV();
+            a.crearArchivoLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
+            
         }
-
+        
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
@@ -1362,7 +1150,7 @@ public class Frame extends javax.swing.JFrame {
         String CampoNuevo = this.tf_Modificar_NombreCampoNuevo.getText();
         for (int i = 0; i < this.tablasLF.size(); i++) {
             if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
-                tablasLF.get(i).modificarCampo(CampoViejo, CampoNuevo);
+                tablasLF.get(i).modificarCampo(CampoViejo,CampoNuevo);
                 JOptionPane.showMessageDialog(this, "Se modifico exitosamente");
                 this.tf_Modificar_NombreCampoNuevo.setText("");
                 this.tf_Modificar_NombreCampoViejo.setText("");
@@ -1395,55 +1183,6 @@ public class Frame extends javax.swing.JFrame {
         }
         this.tf_Eliminar_Campo.setText("");
     }//GEN-LAST:event_jButton9MouseClicked
-
-    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        this.jd_menuRegistro.setVisible(false);
-        jd_registroLV.setModal(true);
-        jd_registroLV.pack();
-        jd_registroLV.setLocationRelativeTo(this);
-        jd_registroLV.setVisible(true);
-    }//GEN-LAST:event_jButton12MouseClicked
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
-        this.jd_menuRegistro.setVisible(false);
-        jd_registro.setModal(true);
-        jd_registro.pack();
-        jd_registro.setLocationRelativeTo(this);
-        jd_registro.setVisible(true);
-    }//GEN-LAST:event_jButton21MouseClicked
-
-    private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
-        this.jd_registroLV.setVisible(false);
-        this.pack();
-        this.setVisible(true);
-    }//GEN-LAST:event_jButton24MouseClicked
-
-    private void jButton26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseClicked
-        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
-        tableModel.setRowCount(0);
-        try {
-            seleccionarTabla();
-        } catch (IOException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton26MouseClicked
-
-    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
-        if (rgstro.getListaCampos() != null) {
-            String registro = "";
-            String[] listaCampos = rgstro.getListaCampos();
-            for (int i = 0; i < listaCampos.length; i++) {
-                registro += JOptionPane.showInputDialog(this, ("Ingresar " + listaCampos[i] + ":"));
-            }
-            rgstro.agregarRegistro(registro);
-        }else{
-            JOptionPane.showMessageDialog(this, "Primero debe seleccionar una tabla");
-        }
-    }//GEN-LAST:event_jButton25MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
@@ -1489,10 +1228,9 @@ public class Frame extends javax.swing.JFrame {
         if (op == JFileChooser.APPROVE_OPTION) {
             this.activePath = "./archivos/" + fc.getSelectedFile().getName();
         }
-
     }
 
-    public void seleccionarTabla() throws FileNotFoundException, IOException {
+    public void anadirRegistro() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
         fc.setFileFilter(filtro);
@@ -1505,10 +1243,28 @@ public class Frame extends javax.swing.JFrame {
         String tabla = "";
         if (op == JFileChooser.APPROVE_OPTION) {
             archivo = fc.getSelectedFile();
-            archivo = fc.getSelectedFile();
-            rgstro.seleccionarArchivo(archivo, jTable2);
+            try {
+                fr = new FileReader(archivo);
+                br = new BufferedReader(fr);
+                String linea;
+                if ((linea = br.readLine()) != null) {
+                    Archivo a = new Archivo();
+                    a.insertarRegistro(linea);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    br.close();
+                    fr.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
+
+    
 
     /**
      * @param args the command line arguments
@@ -1553,7 +1309,6 @@ public class Frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -1563,20 +1318,13 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton38;
@@ -1610,30 +1358,21 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1643,25 +1382,20 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JComboBox jc_tecnica;
     private javax.swing.JDialog jd_funciones;
     private javax.swing.JDialog jd_longitudFija;
     private javax.swing.JDialog jd_longitudVariable;
-    private javax.swing.JDialog jd_menuRegistro;
     private javax.swing.JDialog jd_menuTabla;
     private javax.swing.JDialog jd_registro;
-    private javax.swing.JDialog jd_registroLV;
     private javax.swing.JTextField tf_Eliminar_Campo;
     private javax.swing.JTextField tf_Modificar_NombreCampoNuevo;
     private javax.swing.JTextField tf_Modificar_NombreCampoViejo;
@@ -1672,5 +1406,4 @@ public class Frame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList<ARLF> tablasLF = new ArrayList();
     String activePath = "";
-    ARLV rgstro = new ARLV();
 }
