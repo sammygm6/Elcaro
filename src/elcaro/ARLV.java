@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -18,7 +19,36 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class Archivo {
+public class ARLV {
+
+    ArrayList<String> listaCampos;
+    String nombre;
+    char tipoRegistro;
+    int campos;
+    String tecn;
+    private File archivo;
+
+    private RandomAccessFile RAF;
+
+    public void crearArchivoLV(char tipoRegistro, String nombre, int campos, int tecnica, ArrayList<String> camposL) {
+        File f = new File("./" + nombre + ".txt");
+        try {
+            FileWriter w = new FileWriter(f);
+            BufferedWriter bw = new BufferedWriter(w);
+            PrintWriter wr = new PrintWriter(bw);
+            String nombreCampos = "";
+            for (int i = 0; i < campos; i++) {
+                nombreCampos += camposL.get(i) + ";";
+            }
+            nombreCampos = nombreCampos.substring(0, nombreCampos.length() - 1);
+            wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-" + (nombreCampos.length() + 2) + ":");//escribimos en el archivo
+            wr.append(nombreCampos + "\n");
+            wr.close();
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Error, en la creacion del Archivo");
+        };
+    }
 
     public void insertarRegistro(String texto) {
         String[] especificos = texto.split(":");
@@ -47,22 +77,6 @@ public class Archivo {
             registro[i] = JOptionPane.showInputDialog(this, "Ingresar " + campos[i]);
         }
 
-        File archivo = null;
-        Scanner sc = null;
-        try {
-            archivo = new File("./"+nombre+".txt");
-            sc = new Scanner(archivo);
-            sc.useDelimiter("\n");
-            while (sc.hasNext()) {
-                System.out.println(sc.next());
-                sc.nextInt();
-                sc.next();
-            }
-        } catch (Exception e) {
-        } finally {
-            sc.close();
-        }
-        
         switch (tecnica) {
             case 1: {//indice
 
@@ -78,4 +92,22 @@ public class Archivo {
             }
         }
     }
+
+    /*
+        File archivo = null;
+        Scanner sc = null;
+        try {
+            archivo = new File("./"+nombre+".txt");
+            sc = new Scanner(archivo);
+            sc.useDelimiter("\n");
+            while (sc.hasNext()) {
+                System.out.println(sc.next());
+                sc.nextInt();
+                sc.next();
+            }
+        } catch (Exception e) {
+        } finally {
+            sc.close();
+        }
+     */
 }
