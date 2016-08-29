@@ -334,21 +334,14 @@
                               <Component id="jLabel10" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
                               <Component id="jLabel11" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_Modificar_SizeOfRegistry" alignment="0" pref="365" max="32767" attributes="0"/>
-                              <Component id="tf_Modificar_SizeOfField" alignment="0" pref="365" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tf_Modificar_NombreTabla" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                                      <Component id="jButton37" min="-2" pref="178" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="tf_Modificar_NombreCampoNuevo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tf_Modificar_NombreCampoViejo" alignment="0" pref="178" max="32767" attributes="0"/>
+                              <Component id="jButton37" alignment="0" pref="178" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="199" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -368,19 +361,14 @@
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel11" alignment="3" max="32767" attributes="0"/>
-                              <Component id="tf_Modificar_NombreTabla" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_Modificar_NombreCampoViejo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" max="32767" attributes="0"/>
-                              <Component id="tf_Modificar_SizeOfField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_Modificar_NombreCampoNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" max="32767" attributes="0"/>
-                              <Component id="tf_Modificar_SizeOfRegistry" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
@@ -407,10 +395,10 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre del Campo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_Modificar_NombreTabla">
+                <Component class="javax.swing.JTextField" name="tf_Modificar_NombreCampoViejo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="15" style="0"/>
@@ -425,28 +413,10 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Numero de Campos:"/>
+                    <Property name="text" type="java.lang.String" value="Nuevo Campo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_Modificar_SizeOfField">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="15" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Light" size="30" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tama&#xf1;o de Campos:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="tf_Modificar_SizeOfRegistry">
+                <Component class="javax.swing.JTextField" name="tf_Modificar_NombreCampoNuevo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="15" style="0"/>
@@ -469,6 +439,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton7MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton37">
                   <Properties>

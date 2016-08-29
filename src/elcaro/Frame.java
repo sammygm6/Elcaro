@@ -27,7 +27,7 @@ public class Frame extends javax.swing.JFrame {
         initComponents();
         try {
             File archivo = new File("./directorios");
-            
+
         } catch (Exception e) {
         }
     }
@@ -61,11 +61,9 @@ public class Frame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tf_Modificar_NombreTabla = new javax.swing.JTextField();
+        tf_Modificar_NombreCampoViejo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        tf_Modificar_SizeOfField = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        tf_Modificar_SizeOfRegistry = new javax.swing.JTextField();
+        tf_Modificar_NombreCampoNuevo = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton37 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -306,27 +304,26 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Nombre:");
+        jLabel11.setText("Nombre del Campo:");
 
-        tf_Modificar_NombreTabla.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Modificar_NombreCampoViejo.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Numero de Campos:");
+        jLabel12.setText("Nuevo Campo:");
 
-        tf_Modificar_SizeOfField.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Tamaño de Campos:");
-
-        tf_Modificar_SizeOfRegistry.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        tf_Modificar_NombreCampoNuevo.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
 
         jButton7.setBackground(new java.awt.Color(204, 204, 204));
         jButton7.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jButton7.setForeground(new java.awt.Color(51, 51, 0));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/021_113_layout_wireframe_grid_table-128.png"))); // NOI18N
         jButton7.setText("Modificar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
 
         jButton37.setBackground(new java.awt.Color(102, 102, 0));
         jButton37.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
@@ -347,18 +344,13 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel12))
                 .addGap(97, 97, 97)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tf_Modificar_SizeOfRegistry, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                    .addComponent(tf_Modificar_SizeOfField, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_Modificar_NombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tf_Modificar_NombreCampoNuevo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_Modificar_NombreCampoViejo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(jButton37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7)
@@ -374,16 +366,12 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_Modificar_NombreTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Modificar_NombreCampoViejo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_Modificar_SizeOfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_Modificar_SizeOfRegistry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(tf_Modificar_NombreCampoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(79, 79, 79)
                 .addComponent(jButton7)
                 .addGap(62, 62, 62))
         );
@@ -1010,9 +998,9 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton37MouseClicked
         try {
-            openTxt();
-        } catch (IOException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            getPath();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton37MouseClicked
 
@@ -1069,17 +1057,15 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // evento para crear una nueva tabla o archivo
-        String newPath = "./archivos/"+this.tf_NuevoNombreTabla.getText()+".txt";
+        String newPath = "./archivos/" + this.tf_NuevoNombreTabla.getText() + ".txt";
         int FieldSize = Integer.parseInt(this.tf_Nuevo_SizeOfField.getText());
         int RegistrySize = Integer.parseInt(this.tf_Nuevo_SizeOfRegistry.getText());
-        System.out.println(FieldSize);
-        System.out.println(RegistrySize);
         ////////////////////////////////////////////////////////////////////////
         try {
-            FileWriter writer = new FileWriter("./backup/directorios.txt",true);
+            FileWriter writer = new FileWriter("./backup/directorios.txt", true);
             BufferedWriter Bwriter = new BufferedWriter(writer);
-            
-            Bwriter.write(this.tf_NuevoNombreTabla.getText()+".txt");
+
+            Bwriter.write(this.tf_NuevoNombreTabla.getText() + ".txt");
             Bwriter.newLine();
             Bwriter.close();
         } catch (Exception e) {
@@ -1090,9 +1076,8 @@ public class Frame extends javax.swing.JFrame {
         this.tf_Nuevo_SizeOfRegistry.setText("");
         this.tf_Nuevo_SizeOfField.setText("");
         //
-        ARLF nuevaTabla = new ARLF(newPath,FieldSize,RegistrySize);
+        ARLF nuevaTabla = new ARLF(newPath, FieldSize, RegistrySize);
         this.tablasLF.add(nuevaTabla);
-        System.out.println(tablasLF.size()+" size de tablasLF");
         ////////////////////////////////////////////////////////////////////////
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -1100,7 +1085,6 @@ public class Frame extends javax.swing.JFrame {
         // evento para seleccionar tabla para agregar campos
         try {
             getPath();
-            System.out.println(this.activePath+" troll");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1108,14 +1092,20 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // evento para agregar un nuevo campo
+        String nuevoCampo = this.tf_NuevoCampo_Campo.getText();
         for (int i = 0; i < this.tablasLF.size(); i++) {
             if (this.activePath.equals(this.tablasLF.get(i).getPath())) {
-                tablasLF.get(i).insertarCampo(this.tf_NuevoCampo_Campo.getText());
-            }else{
+                tablasLF.get(i).insertarCampo(nuevoCampo);
+            } else {
             }
         }
         this.tf_NuevoCampo_Campo.setText("");
     }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // evento para modificar un campo
+        
+    }//GEN-LAST:event_jButton7MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
@@ -1149,8 +1139,8 @@ public class Frame extends javax.swing.JFrame {
             }
         }
     }
-    
-    public void getPath() throws FileNotFoundException, IOException{
+
+    public void getPath() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
         fc.setFileFilter(filtro);
@@ -1159,11 +1149,10 @@ public class Frame extends javax.swing.JFrame {
         int op = fc.showOpenDialog(this);
         String tabla = "";
         if (op == JFileChooser.APPROVE_OPTION) {
-            System.out.println("aca se activo aproveoption");
-            this.activePath = "./archivos/"+fc.getSelectedFile().getName();
+            this.activePath = "./archivos/" + fc.getSelectedFile().getName();
         }
     }
-    
+
     public void anadirRegistro() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
@@ -1197,28 +1186,28 @@ public class Frame extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void crearArchivoLV(char tipoRegistro, String nombre, int campos, int tecnica, ArrayList<String> camposL) {
         File f = new File("./" + nombre + ".txt");
-        if(f.exists()) {
+        if (f.exists()) {
             JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
-        } else{
-        try {
-            FileWriter w = new FileWriter(f);
-            BufferedWriter bw = new BufferedWriter(w);
-            PrintWriter wr = new PrintWriter(bw);
-            String nombreCampos = "";
-            for (int i = 0; i < campos; i++) {
-                nombreCampos += camposL.get(i)+";";
-            }
-            nombreCampos = nombreCampos.substring(0, nombreCampos.length()-1);
-            wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-"+(nombreCampos.length()+2)+":");//escribimos en el archivo
-            wr.append(nombreCampos+"\n");
-            wr.close();
-            bw.close();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error, en la creacion del Archivo");
-        };
+        } else {
+            try {
+                FileWriter w = new FileWriter(f);
+                BufferedWriter bw = new BufferedWriter(w);
+                PrintWriter wr = new PrintWriter(bw);
+                String nombreCampos = "";
+                for (int i = 0; i < campos; i++) {
+                    nombreCampos += camposL.get(i) + ";";
+                }
+                nombreCampos = nombreCampos.substring(0, nombreCampos.length() - 1);
+                wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-" + (nombreCampos.length() + 2) + ":");//escribimos en el archivo
+                wr.append(nombreCampos + "\n");
+                wr.close();
+                bw.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error, en la creacion del Archivo");
+            };
         }
     }
 
@@ -1294,7 +1283,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1352,14 +1340,13 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JDialog jd_longitudVariable;
     private javax.swing.JDialog jd_menuTabla;
     private javax.swing.JDialog jd_registro;
-    private javax.swing.JTextField tf_Modificar_NombreTabla;
-    private javax.swing.JTextField tf_Modificar_SizeOfField;
-    private javax.swing.JTextField tf_Modificar_SizeOfRegistry;
+    private javax.swing.JTextField tf_Modificar_NombreCampoNuevo;
+    private javax.swing.JTextField tf_Modificar_NombreCampoViejo;
     private javax.swing.JTextField tf_NuevoCampo_Campo;
     private javax.swing.JTextField tf_NuevoNombreTabla;
     private javax.swing.JTextField tf_Nuevo_SizeOfField;
     private javax.swing.JTextField tf_Nuevo_SizeOfRegistry;
     // End of variables declaration//GEN-END:variables
 ArrayList<ARLF> tablasLF = new ArrayList();
-String activePath = "";
+    String activePath = "";
 }
