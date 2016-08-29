@@ -568,11 +568,6 @@ public class Frame extends javax.swing.JFrame {
         jButton14.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
         jButton14.setForeground(new java.awt.Color(51, 51, 0));
         jButton14.setText("Seleccionar");
-        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton14MouseClicked(evt);
-            }
-        });
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));

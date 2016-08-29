@@ -16,7 +16,7 @@ public class ARLF {
     private RandomAccessFile RAF;
     private int address;
     private Stack<String> AvailList = new Stack();
-    private int header = 3;
+    private int sizeofHeader = 3;
 
     public ARLF() {
     }
@@ -58,7 +58,7 @@ public class ARLF {
     }
 
     public int getAddress(int RecordNumber) {
-        return RecordNumber * sizeofField + header;
+        return RecordNumber * sizeofField + sizeofHeader;
     }
 
     public ARLF(File registro) {
@@ -158,14 +158,29 @@ public class ARLF {
         }
     }
 
-    public void intercambiar(int fieldNumberAt){
-        
+    public void borrar(int fieldNumberAt){
+        try {
+            this.RAF = new RandomAccessFile(this.archivo, "rw");
+            RAF.seek(sizeofHeader-1);
+            int inicio = RAF.read();
+            RAF.seek(sizeofHeader-1);
+            RAF.write(fieldNumberAt*this.sizeofField+3);
+            RAF.seek(fieldNumberAt*this.sizeofField+3);
+            RAF.write('*');
+            RAF.write(inicio);
+        } catch (Exception e) {
+        } finally {
+            try {
+                RAF.close();
+            } catch (Exception e) {
+            }
+        }
     }
 
     public void borrarCampo(String campo) {
         try {
             this.RAF = new RandomAccessFile(this.archivo, "rw");
-            RAF.seek(header);
+            RAF.seek(sizeofHeader);
             String campoTmp;
             campoTmp = "";
             boolean encontro = false;
@@ -175,14 +190,15 @@ public class ARLF {
                 int caracter = RAF.read();
                 if ((char)caracter == ' ') {
                     if(campoTmp.equals(campo)){
-                        in
+                        borrar(fieldNumberAt);
+                        this.AvailList.push(Integer.toString(fieldNumberAt*sizeofHeader+3));
                         encontro = true;
                     }else{
                         campoTmp = "";
                     }
                 }else{
                     campoTmp += (char)caracter;
-                    System.out.println(campoTmp+" campoTmp");
+                    //System.out.println(campoTmp+" campoTmp");
                 }
             }
             fieldNumberAt++;
@@ -233,7 +249,7 @@ public class ARLF {
     public void modificarCampo(String campoViejo, String campoNuevo) {
         try {
             this.RAF = new RandomAccessFile(this.archivo, "rw");
-            RAF.seek(header);
+            RAF.seek(sizeofHeader);
             String campoTmp;
             campoTmp = "";
             boolean encontro = false;
