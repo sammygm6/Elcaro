@@ -26,7 +26,6 @@ public class Archivo {
         String[] campos = especificos[1].split(";");
         /*
          formato codigo de inicio (V-Tabla1-5-1-0)
-    
          ---Significado---
          1)Si es longitud variable o fija
          2)Nombre de la Tabla

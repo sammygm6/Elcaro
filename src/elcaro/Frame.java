@@ -539,6 +539,11 @@ public class Frame extends javax.swing.JFrame {
         jButton14.setFont(new java.awt.Font("Sitka Small", 0, 13)); // NOI18N
         jButton14.setForeground(new java.awt.Color(51, 51, 0));
         jButton14.setText("Seleccionar");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
@@ -941,7 +946,9 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15MouseClicked
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
-        // TODO add your handling code here:
+        this.jd_longitudVariable.setVisible(false);
+        this.pack();
+        this.setVisible(true);
     }//GEN-LAST:event_jButton16MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -1106,6 +1113,14 @@ public class Frame extends javax.swing.JFrame {
         // evento para modificar un campo
         
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+       try {
+            openTxt();
+        } catch (IOException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton14MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
