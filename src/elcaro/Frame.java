@@ -1047,7 +1047,16 @@ public class Frame extends javax.swing.JFrame {
         for (int i = 0; i < campos; i++) {
             listaCampos.add(JOptionPane.showInputDialog(this, "Ingresar campo #" + (i + 1)));
         }
-        crearArchivoLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
+        
+        File f = new File("./" + nombre + ".txt");
+        if (f.exists()) {
+            JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
+        } else{
+            ARLV a = new ARLV();
+            a.crearArchivoLV(tipoRegistro, nombre, campos, tecnica, listaCampos);
+            
+        }
+        
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
@@ -1202,29 +1211,7 @@ public class Frame extends javax.swing.JFrame {
         }
     }
 
-    public void crearArchivoLV(char tipoRegistro, String nombre, int campos, int tecnica, ArrayList<String> camposL) {
-        File f = new File("./" + nombre + ".txt");
-        if (f.exists()) {
-            JOptionPane.showMessageDialog(this, "Error, el nombre del Archivo ya existe");
-        } else {
-            try {
-                FileWriter w = new FileWriter(f);
-                BufferedWriter bw = new BufferedWriter(w);
-                PrintWriter wr = new PrintWriter(bw);
-                String nombreCampos = "";
-                for (int i = 0; i < campos; i++) {
-                    nombreCampos += camposL.get(i) + ";";
-                }
-                nombreCampos = nombreCampos.substring(0, nombreCampos.length() - 1);
-                wr.write(tipoRegistro + "-" + nombre + "-" + campos + "-" + tecnica + "-" + (nombreCampos.length() + 2) + ":");//escribimos en el archivo
-                wr.append(nombreCampos + "\n");
-                wr.close();
-                bw.close();
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "Error, en la creacion del Archivo");
-            };
-        }
-    }
+    
 
     /**
      * @param args the command line arguments
