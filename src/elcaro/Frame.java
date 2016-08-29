@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 /**
  *
  * @author Bandido
@@ -25,11 +24,6 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
-        try {
-            File archivo = new File("./directorios");
-
-        } catch (Exception e) {
-        }
     }
 
     /**
