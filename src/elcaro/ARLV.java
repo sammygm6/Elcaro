@@ -140,20 +140,18 @@ public class ARLV {
         };
     }
 
-    public void seleccionarArchivo( File archivo, JTable jTable) {
+    public void seleccionarArchivo(File archivo, JTable jTable) {
         FileReader fr = null;
         BufferedReader br = null;
         try {
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
             String linea = br.readLine();
-            if(linea.charAt(0)!='V'){
+            if (linea.charAt(0) != 'V') {
                 System.out.println("El archivo no pertenece a longitud variable");
                 JOptionPane.showMessageDialog(null, "El archivo no pertenece a longitud variable");
-            }else{
-                if (linea  != null) {
-                    datosClase(linea, jTable);
-                }
+            } else if (linea != null) {
+                datosClase(linea, jTable);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -169,11 +167,8 @@ public class ARLV {
 
     public void datosClase(String texto, JTable jTable) throws IOException {
         String[] especificos = texto.split(":");
-
         String[] codigo = especificos[0].split("-");
-        
         listaCampos = especificos[1].split(";");
-        
         tipoRegistro = codigo[0].charAt(0);
         nombre = codigo[1];
         campos = Integer.parseInt(codigo[2]);
@@ -183,12 +178,81 @@ public class ARLV {
         getJTable(jTable);
     }
 
-    public void agregarRegistro(String registro) {
+    public void agregarRegistro(String[] registro) throws IOException {
+        String concat = "";
+        System.out.println("    TECNICAA    ");
         if (tecnica == 1 || tecnica == 2) {
-            
+            for (int i = 0; i < campos; i++) {
+                concat += registro[i] + ";";
+            }
+            concat += "\r\n";
+            if (tecnica == 1) {
+                File f = new File("./I" + nombre + ".txt");
+                File f2 = new File("./" + nombre + ".txt");
+                try {
+                    FileWriter w = new FileWriter(f);
+                    BufferedWriter bw = new BufferedWriter(w);
+                    PrintWriter wr = new PrintWriter(bw);
+                    
+                    RandomAccessFile raf2 = new RandomAccessFile("./" + nombre + ".txt", "rw");
+                    raf2.seek(0);
+                    String linea2;
+                    int num = 0;
+                    while ((linea2 = raf2.readLine()) != null) {
+                        num += linea2.length() + 2;
+                        wr.write(nombre + "-" + num);//escribimos en el archivo
+
+                    }
+                    
+                    wr.append(System.lineSeparator());
+                    wr.close();
+                    bw.close();
+                } catch (IOException e) {
+                    System.out.println("Error, en abrir el indice");
+                };
+
+            } else {
+                System.out.println("Metodo 2");
+                for (int i = 0; i < campos; i++) {
+                    concat += registro[i] + ";";
+                }
+                concat += "\r\n";
+                File f = new File("./" + nombre + ".txt");
+                try {
+                    RandomAccessFile raf2 = new RandomAccessFile(f, "rw");
+                    raf2.seek(0);
+                    String linea2;
+                    int num = 0;
+                    while ((linea2 = raf2.readLine()) != null) {
+                        num += linea2.length() + 2;
+                    }
+                    raf2.seek(num);
+                    raf2.writeBytes(concat + "\r\n ");
+                } catch (IOException e) {
+                    System.out.println("Error, crear key value");
+                };
+            }
         } else if (tecnica == 3) {
-            
+            for (int i = 0; i < campos; i++) {
+                concat += listaCampos[i] + "=" + registro[i] + ";";
+            }
+            concat += "\r\n";
+            File f = new File("./" + nombre + ".txt");
+            try {
+                RandomAccessFile raf2 = new RandomAccessFile(f, "rw");
+                raf2.seek(0);
+                String linea2;
+                int num = 0;
+                while ((linea2 = raf2.readLine()) != null) {
+                    num += linea2.length() + 2;
+                }
+                raf2.seek(num);
+                raf2.writeBytes(concat + "\r\n ");
+            } catch (IOException e) {
+                System.out.println("Error, crear key value");
+            };
         }
+        
     }
 
     public void Posicion() {
@@ -229,7 +293,7 @@ public class ARLV {
         if (tecnica == 1 || tecnica == 2) {
             RAF = new RandomAccessFile(this.archivo, "rw");
             RAF.seek(0);
-            
+
             String linea = RAF.readLine();
             while ((linea = RAF.readLine()) != null) {
                 String[] data = linea.split(";");
@@ -238,7 +302,7 @@ public class ARLV {
         } else if (tecnica == 3) {
             RAF = new RandomAccessFile(archivo, "rw");
             RAF.seek(0);
-            
+
             String linea = RAF.readLine();
             while ((linea = RAF.readLine()) != null) {
                 String[] data = linea.split(";");

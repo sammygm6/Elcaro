@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -767,6 +768,11 @@ public class Frame extends javax.swing.JFrame {
         jButton22.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
         jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/021_113_layout_wireframe_grid_table-128.png"))); // NOI18N
         jButton22.setText("Agregar");
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton22MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -998,16 +1004,16 @@ public class Frame extends javax.swing.JFrame {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(88, 88, 88)
                 .addComponent(jButton25)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addContainerGap(166, Short.MAX_VALUE)
                 .addComponent(jButton25)
-                .addGap(89, 89, 89))
+                .addGap(161, 161, 161))
         );
 
         jTabbedPane4.addTab("Agregar", jPanel12);
@@ -1434,16 +1440,25 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
         if (rgstro.getListaCampos() != null) {
-            String registro = "";
             String[] listaCampos = rgstro.getListaCampos();
+            String[] registro = rgstro.getListaCampos();
             for (int i = 0; i < listaCampos.length; i++) {
-                registro += JOptionPane.showInputDialog(this, ("Ingresar " + listaCampos[i] + ":"));
+                registro[i] += JOptionPane.showInputDialog(this, ("Ingresar " + listaCampos[i] + ":"));
             }
-            rgstro.agregarRegistro(registro);
-        }else{
+            try {
+                rgstro.agregarRegistro(registro);
+                rgstro.setUpTableData(jTable2);
+            } catch (IOException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             JOptionPane.showMessageDialog(this, "Primero debe seleccionar una tabla");
         }
     }//GEN-LAST:event_jButton25MouseClicked
+
+    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton22MouseClicked
 
     public void openTxt() throws FileNotFoundException, IOException {
         JFileChooser fc = new JFileChooser();
